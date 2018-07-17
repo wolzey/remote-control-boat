@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
-const paintCanvas = () => {
-
-}
+import { paintCanvas } from './helpers/paintCanvas'
 
 class App extends Component {
 
