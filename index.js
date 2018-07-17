@@ -18,26 +18,22 @@ const arduinoPort = new SerialPort('/dev/ttyACM0', { baudRate: 9600 }, (err) => 
 let v4l2camera = null
 let cam;
 let feed = null;
-try {
-  v4l2camera = require('v4l2camera')
-  cam = new v4l2camera.Camera("/dev/video0")
-  cam.configSet({width: 352, height: 288})
-  cam.start()
-  cam.capture(function loop() {
-    cam.capture(loop)
-  })
-} catch (err) {
-  console.log("Cam only works in pi environment")
+
+const v4l2camera = require("v4l2camera");
+const cam = new v4l2camera.Camera("/dev/video0");
+if (cam.configGet().formatName !== "MJPG") {
+  console.log("NOTICE: MJPG camera required");
+  process.exit(1);
 }
 
-app.get('/video-feed', (req, res) => {
-  let buffer = Buffer(cam.toYUYV());
-  res.set({
-    "content-type": "image/vnd-raw",
-    "content-length": buffer.length,
-  });
-  res.send(buffer);
-});
+// app.get('/video-feed', (req, res) => {
+//   let buffer = Buffer(cam.toYUYV());
+//   res.set({
+//     "content-type": "image/vnd-raw",
+//     "content-length": buffer.length,
+//   });
+//   res.send(buffer);
+// });
 
 arduinoPort.on('open', () => {
   console.log("Port is open")
