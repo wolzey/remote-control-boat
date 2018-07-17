@@ -9,14 +9,9 @@ const HEIGHT = 288;
 function paintCanvas() {
   const canvas = document.createElement('canvas')
 
-  canvas
-    .attr('id', 'video-canvas')
-    .width(WIDTH)
-    .height(HEIGHT)
-    .appendTo(document.getElementById('video'))
-
   const c2d = canvas.getContext('2d')
 
+  document.getElementById('video').appendChild(canvas)
 
   (function load() {
     let req = new XMLHttpRequest()
@@ -31,6 +26,7 @@ function paintCanvas() {
     req.open("GET", "/video-feed", true)
     req.send()
   })()
+
 }
 
 class App extends Component {
