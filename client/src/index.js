@@ -5,13 +5,14 @@ import { paintCanvas } from './helpers/paintCanvas'
 class App extends Component {
 
   componentDidMount() {
-    paintCanvas(this.canvas)
+    let canvas = document.getElementById('video-canvas')
+    paintCanvas(canvas)
   }
 
   render() {
     return (
       <div className="video-stream">
-        <canvas ref={(canvas) => {this.canvas = canvas}} className="video-canvas" width='352' height='288'></canvas>
+        <canvas ref={(canvas) => {this.canvas = canvas}} id="video-canvas" className="video-canvas" width='352' height='288'></canvas>
       </div>
     )
   }
