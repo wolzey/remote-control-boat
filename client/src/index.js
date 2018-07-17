@@ -5,8 +5,7 @@ import { paintCanvas } from './helpers/paintCanvas'
 class App extends Component {
 
   componentDidMount() {
-    let canvas = document.getElementById('video-canvas')
-    paintCanvas(canvas)
+    paintCanvas()
   }
 
   render() {

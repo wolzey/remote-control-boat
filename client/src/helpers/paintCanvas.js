@@ -3,7 +3,8 @@ import { yuyv2rgba } from './yuyv2rgba'
 const WIDTH  = 352;
 const HEIGHT = 288;
 
-export function paintCanvas(canvas) {
+export function paintCanvas() {
+  const canvas = document.getElementById('video-canvas')
   const c2d = canvas.getContext('2d')
 
   (function load() {
