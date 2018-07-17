@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { paintCanvas } from './helpers/paintCanvas'
 
 import { yuyv2rgba } from './helpers/yuyv2rgba'
 
 const WIDTH  = 352;
 const HEIGHT = 288;
 
-export function paintCanvas() {
+function paintCanvas() {
   const canvas = document.createElement('canvas')
 
   canvas
