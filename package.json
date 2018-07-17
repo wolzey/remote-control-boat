@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx concurrently \"cd client && PORT=3000 npm start\" \"node index.js\""
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
     "express": "^4.16.3",
     "serialport": "^6.2.1",
     "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0"
   }
 }
