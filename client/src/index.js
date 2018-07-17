@@ -7,8 +7,17 @@ import { yuyv2rgba } from './helpers/yuyv2rgba'
 const WIDTH  = 352;
 const HEIGHT = 288;
 
-export function paintCanvas(canvas) {
+export function paintCanvas() {
+  const canvas = document.createElement('canvas')
+
+  canvas
+    .attr('id', 'video-canvas')
+    .width(WIDTH)
+    .height(HEIGHT)
+    .appendTo(document.getElementById('video'))
+
   const c2d = canvas.getContext('2d')
+
 
   (function load() {
     let req = new XMLHttpRequest()
@@ -28,13 +37,13 @@ export function paintCanvas(canvas) {
 class App extends Component {
 
   componentDidMount() {
-    paintCanvas(this.canvas)
+    paintCanvas()
   }
 
   render() {
     return (
       <div className="video-stream">
-        <canvas ref={(canvas) => {this.canvas = canvas}} id="video-canvas" className="video-canvas" width='352' height='288'></canvas>
+        <div id="video"></div>
       </div>
     )
   }
